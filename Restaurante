@@ -1,0 +1,32 @@
+use myrestaurants
+
+db.createCollection('restaurante');
+
+db.createCollection("count");
+
+db.count.insert({_id:"restaurant_id",sequence_value:0});
+
+function getNextSequence(sequenceName){
+
+   var sequenceDocument = db.count.findAndModify({
+      query:{_id: sequenceName },
+      update: {$inc:{sequence_value:1}},
+      new:true
+   });
+	
+   return sequenceDocument.sequence_value;
+}
+
+db.restaurante.insert({ _id:getNextSequence("restaurant_id"),
+                       name:"Restaurant Arnia",
+                       description:"Misiunea noastră este să oferim o experiență unică tuturor clienților.",
+                       type: ["bar", "fast-food", "pizza"]}
+);
+
+
+db.restaurante.insert([{_id:getNextSequence("restaurant_id"),
+                       name:"Restaurant Moara de foc",
+                       description:"Misiunea noastră este să oferim o experiență unică tuturor clienților prin atmosfera primitoare a locului.",
+                       type: ["rezervari", "cafenea", "pizza"]}
+
+]);
