@@ -49,3 +49,14 @@ db.restaurante.insert([{_id:getNextSequence("restaurant_id"),
                        description:"Bucatarie japoneza, sushi",
                        type: ["Restaurant japonez", "sushi"]}
 ]);
+
+
+db.restaurante.find({name:"nume"});
+
+db.restaurante.find({_id:id});
+
+db.restaurante.find({type:"pizza"});
+
+db.restaurante.find({$or:[{name:"nume1"},{name:"nume2"},{name:"nume3"}]});
+
+db.restaurante.find({_id:{$lt:8}});
