@@ -20,3 +20,19 @@ db.reviews.insert([{reviewer:"Lungu Catalin",score:5.5,description:"Mancarea a f
 ,{reviewer:"Barbu Dan",score:2,description:"Am vrut sa luam o masa in familie, dar dupa aproape o ora de asteptat, mancarea a venit...dar rece."}
 ,{reviewer:"Mihai Stefan",score:10}
 ]);
+
+
+db.reviews.update({reviewer:"nume"},{$set:{score:?}});
+
+db.reviews.remove({reviewer:"nume"});
+
+db.reviews.find({reviewer:"nume"});
+
+db.reviews.find({score:10});
+
+db.reviews.find({score:{$lt:8}});
+
+db.reviews.find({score:{$gt:7}});
+
+db.reviews.find({$or:[{reviewer:"nume1"},{reviewer:"nume2"},{reviewer:"nume3"}]});
+
